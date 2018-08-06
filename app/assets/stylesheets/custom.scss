@@ -22,3 +22,17 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
+
+table{
+  border-collapse: collapse;
+  width: 50%;
+  table-layout: fixed;
+  
+}
+
+td, th{
+  border: 1px solid black;
+  text-align: center;
+  padding: 5px;
+  width: 20px;
+}

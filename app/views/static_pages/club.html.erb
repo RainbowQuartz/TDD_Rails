@@ -1,1 +1,22 @@
-<h1>J affiche depuis club</h1>
+<h1>List of Club participants: </h1>
+
+<table >
+<tr>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Email</th>
+</tr>
+</table>
+<% @user.each do |user| %>
+
+<table >
+
+  <tr>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name%></td>
+    <td><%= user.email %></td>
+  </tr>
+
+</table>
+<% end %>
+</div>
