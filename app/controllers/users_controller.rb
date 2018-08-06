@@ -21,8 +21,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    puts "====================edit========================"
+    @user = User.find(params[:id])
+  end
+
   def update
     puts "====================update========================"
+    puts params.inspect
+    user = User.create(user_params)
+    redirect_to root_path
   end
 
   private

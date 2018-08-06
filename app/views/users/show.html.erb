@@ -1,2 +1,11 @@
-<h1>Welcome <%= @user.first_name%> </h1>
-<p>Email adress: <%= @user.email %></p>
+<h1>Bienvenue <%=@user.first_name%></h1>
+<p>Ton email est <%=@user.email%></p>
+
+<div class="container">
+<p>Update your profile:  </p>
+<a href="<%= edit_user_path %>" class='btn btn-primary'>Update</a>
+</div>
+<div class="container">
+<p>To delete your profil:  </p>
+<a href="<%= user_path(@user)%>" class='btn btn-danger' data-confirm='sure' data-method='DELETE'>DELETE</a>
+</div>
