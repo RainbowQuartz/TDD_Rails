@@ -13,7 +13,8 @@ class UsersTest < ApplicationSystemTestCase
     fill_in "Last name", with: @user.last_name
     fill_in "Email", with: @user.email
     click_on "Create my account"
-   # assert_redirected_to root_path
+    assert @user.valid?
+    #assert_redirected_to user_path
   end
 
  test "Log in a user " do
