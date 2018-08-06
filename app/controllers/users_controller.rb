@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :edit, :update, :destroy]
+  
   def new
     puts "====================new========================"
     @user = User.new
@@ -46,4 +49,17 @@ class UsersController < ApplicationController
    def user_params
       params.require(:user).permit(:first_name, :last_name, :email)
     end
+
+    def correct_user
+    @user = User.find(params[:id])
+    redirect_to login_path unless current_user?(@user)
+    end
+
+    def logged_in_user
+      unless logged_in?
+      store_location
+      redirect_to login_path
+      end
+   end 
+
 end
