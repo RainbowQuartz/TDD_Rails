@@ -46,6 +46,23 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     #assert the presence of 3 rows in
     assert_select 'table', count: 3
   end
+
+  test 'Navbar shows items when logged in' do
+    get login_path
+    post login_path, params: { session: { email: @user.email  } }
+    follow_redirect!
+    get '/'
+    assert_select "header a[href=?]", root_path, count: 1
+    assert_select "header a[href=?]", '/user/:id', count: 1
+    assert_select "header a[href=?]", logout_path, count: 1
+    assert_select "header a[href=?]", club_path, count: 1
+  end
+
+  test 'Navbar shows items when logged out' do
+    get '/'
+    assert_select "header a[href=?]", root_path, count: 1
+    assert_select "header a[href=?]", login_path, count: 1
+  end
   # test "the truth" do
   #   assert true
   # end
