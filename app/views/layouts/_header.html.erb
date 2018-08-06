@@ -1,0 +1,17 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to "Home", root_path %></li>
+        <% if current_user%>
+          <li class="nav-item" ><%= link_to "Profile", current_user, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Log out", logout_path, method: :delete, class: "btn btn-danger"  %>
+            <li class="nav-item"><%= link_to "Club", club_path,  class: "nav-link"  %>
+          </li>
+        <% else %>
+        <li class="nav-item"><%= link_to "Sign up", new_user_path %></li>
+          <li class="nav-item"><%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

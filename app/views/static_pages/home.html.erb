@@ -1,1 +1,11 @@
-<h1>J'affiche depuis Home static pages</h1>
+<h1>Welcome </h1>
+<div class="container">
+  <div class="jumbotron">
+<p><% if logged_in? %>
+  <%= link_to 'Access to Club', 'club_path' %>
+  <% else %>
+  <%= link_to 'Log In', 'login' %>
+  <% end %>
+</p>
+  </div>
+</div>
