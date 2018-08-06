@@ -33,6 +33,14 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    puts "====================delete========================"
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
+    puts "---------------------end--------------------------"
+  end
+
   private
 
    def user_params
