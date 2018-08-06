@@ -53,7 +53,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     get '/'
     assert_select "header a[href=?]", root_path, count: 1
-    assert_select "header a[href=?]", '/user/:id', count: 1
+    assert_select "header a[href=?]", user_path(@user), count: 1
     assert_select "header a[href=?]", logout_path, count: 1
     assert_select "header a[href=?]", club_path, count: 1
   end
@@ -63,7 +63,13 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "header a[href=?]", root_path, count: 1
     assert_select "header a[href=?]", login_path, count: 1
   end
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test 'Assert the presence of profile link when logged in' do
+    get login_path
+    post login_path, params: { session: { email: @user.email  } }
+    follow_redirect!
+    get '/'
+    assert_select "a[href=?]", user_path(@user), count: 1
+  end
+
 end
