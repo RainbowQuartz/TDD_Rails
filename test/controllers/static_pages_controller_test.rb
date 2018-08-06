@@ -72,4 +72,10 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user), count: 1
   end
 
+  test 'Show info of the user after logged in' do
+    get login_path
+    post login_path, params: { session: { email: @user.email  } }
+    get user_path(@user)
+    assert_select "h1", "Welcome #{@user.first_name}"
+  end
 end
