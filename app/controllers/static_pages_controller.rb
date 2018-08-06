@@ -5,8 +5,10 @@ class StaticPagesController < ApplicationController
 
   def club
     @user = User.all
+    if logged_in?
+    else
+      redirect_to 'sessions#new'
+    end
   end
 
 end
-
-

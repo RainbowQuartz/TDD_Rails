@@ -2,9 +2,9 @@
 <div class="container">
   <div class="jumbotron">
 <p><% if logged_in? %>
-  <%= link_to 'Access to Club', 'club_path' %>
+  <%= link_to 'Access to Club', club_path%>
   <% else %>
-  <%= link_to 'Log In', 'login' %>
+  <%= link_to 'Log In', login_path %>
   <% end %>
 </p>
   </div>
